@@ -60,7 +60,7 @@
                     </form>
 
                     @if (Route::has('password.request'))
-                        <a class="text-primary d-block mt-2" href="{{ route('password.request') }}">
+                        <a class="text-primary d-block mt-2" href="{{ route('admin.password.request') }}">
                             {{ __('Forgot your password?') }}
                         </a>
                     @endif

@@ -132,13 +132,13 @@
                 <ul class="dropdown-menu fsz-sm">
                     <li><a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700"><i
                                 class="ti-settings mR-10"></i> <span>Setting</span></a></li>
-                    <li><a href="{{ route('profile.edit') }}" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700"><i
+                    <li><a href="{{ route('admin.profile.edit') }}" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700"><i
                                 class="ti-user mR-10"></i> <span>{{ __('Profile') }}</span></a></li>
                     <li><a href="/email" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700"><i
                                 class="ti-email mR-10"></i> <span>Messages</span></a></li>
                     <li role="separator" class="divider"></li>
                     <li>
-                        <form method="POST" action="{{ route('logout') }}" class="py-0">
+                        <form method="POST" action="{{ route('admin.logout') }}" class="py-0">
                             @csrf
 
                             <button type="submit" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700"

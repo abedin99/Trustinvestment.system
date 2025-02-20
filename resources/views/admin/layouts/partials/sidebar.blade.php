@@ -22,7 +22,7 @@
         </div>
         <ul class="sidebar-menu scrollable pos-r">
             <li class="nav-item mT-30 {{ Request::routeIs('dashboard') ? 'actived' : null }}">
-                <a class="sidebar-link" href="{{ route('dashboard') }}"><span class="icon-holder">
+                <a class="sidebar-link" href="{{ route('admin.dashboard') }}"><span class="icon-holder">
                         <i class="c-blue-500 ti-home"></i>
                     </span><span class="title">Dashboard</span>
                 </a>
