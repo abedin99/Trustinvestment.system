@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             UserTableSeeder::class,
             AdminTableSeeder::class,
             SettingTableSeeder::class,
+            CurrencyTableSeeder::class,
         ]);
 
         User::factory()->create([
