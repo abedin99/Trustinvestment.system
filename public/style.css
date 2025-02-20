@@ -1059,7 +1059,7 @@ a[data-goto]:hover {
 }
 
 .fc-event.fc-selected {
-    z-index: 9999!important;
+    z-index: 9999 !important;
     box-shadow: 0 2px 5px rgba(0, 0, 0, .2)
 }
 
@@ -1845,4 +1845,12 @@ a.fc-more:hover {
 
 .fc-unthemed .fc-list-empty {
     background-color: #eee
+}
+
+/* Custom CSS */
+.nav-item.actived {
+    background: #02a7f1;
+}
+.nav-item.actived .sidebar-link{
+    color: #f1f1f1 !important;
 }

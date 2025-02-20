@@ -1,4 +1,4 @@
-@extends('template.sign')
+@extends('demo.template.sign')
 
 @section('title', 'Sign Up')
 

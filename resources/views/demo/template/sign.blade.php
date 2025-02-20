@@ -27,8 +27,8 @@
     <div class="peers ai-s fxw-nw h-100vh">
         @yield('content')
     </div>
-    <script type="text/javascript" src="vendor.js"></script>
-    <script type="text/javascript" src="bundle.js"></script>
+    <script type="text/javascript" src="{{ asset('vendor.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundle.js') }}"></script>
 </body>
 
 </html>
