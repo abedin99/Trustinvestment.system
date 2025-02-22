@@ -22,10 +22,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
     })->name('home');
 
     Route::middleware('guest:admin')->group(function () {
-        Route::get('register', [RegisteredUserController::class, 'create'])
-            ->name('register');
+        // Route::get('register', [RegisteredUserController::class, 'create'])
+        //     ->name('register');
 
-        Route::post('register', [RegisteredUserController::class, 'store']);
+        // Route::post('register', [RegisteredUserController::class, 'store']);
 
         Route::get('login', [AuthenticatedSessionController::class, 'create'])
             ->name('login');

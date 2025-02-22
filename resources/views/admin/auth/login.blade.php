@@ -1,21 +1,22 @@
 <x-admin-guest-layout>
+    {{-- meta_title --}}
     <x-slot name="meta_title">
         Admin Login
     </x-slot>
 
-    {{-- Session Status --}}
-    <x-auth-session-status class="mb-4" :status="session('status')" />
     <div class="row d-flex justify-content-center">
-        <div
-            class="col-12 col-md-6 pX-40 pY-80 h-100 bgc-white">
+        <div class="col-12 col-md-6 pX-40 pY-80 h-100 bgc-white">
             <div class="card">
                 <div class="card-header">
 
                     <h4 class="fw-300 c-grey-900 text-success">Admin Login</h4>
-                    <h1 class="text-primary">{{ config('app.name') }}</h1>
+                    <h1 class="text-primary">{{ Setting::get('app_name') }}</h1>
                 </div>
 
                 <div class="card-body">
+
+                    {{-- Session Status --}}
+                    <x-auth-session-status class="mb-4" :status="session('status')" />
 
                     <form method="POST" action="{{ route('admin.login') }}">
                         @csrf
