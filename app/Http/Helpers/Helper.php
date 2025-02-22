@@ -16,6 +16,11 @@ class Helper
             return asset($url);
         }
 
-        return asset('dist/img/avatar.png');
+        return asset('assets/img/avatar.png');
+    }
+
+    static function showBalance($amount)
+    {
+        return "$".$amount;
     }
 }

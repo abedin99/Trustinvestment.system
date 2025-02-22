@@ -1851,10 +1851,50 @@ a.fc-more:hover {
 .nav-item.actived {
     background: #02a7f1;
 }
-.nav-item.actived .sidebar-link{
+
+.nav-item.actived .sidebar-link {
     color: #f1f1f1 !important;
 }
 
-.sidebar .actived .icon-holder i{
+.sidebar .actived .icon-holder i {
     color: #fff !important;
+}
+
+
+.header .header-container .nav-right>li.balance {
+    margin: 10px auto;
+}
+.header .header-container .nav-right>li.balance>a {
+    color: #72777a;
+    display: block;
+    line-height: 45px;
+    min-height: 45px;
+    padding: 0 15px;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+.header .header-container .nav-left .balance,
+.header .header-container .nav-right .balance {
+    position: relative
+}
+
+.header .header-container .nav-left .balance .counter,
+.header .header-container .nav-right .balance .counter {
+    background-color: #ff3c7e;
+    border-radius: 50px;
+    color: #fff;
+    font-size: 10px;
+    line-height: 1;
+    padding: 3px 5.5px;
+    position: absolute;
+    right: 6px;
+    top: 12px
+}
+
+.header .header-container .nav-left .balance .dropdown-menu,
+.header .header-container .nav-right .balance .dropdown-menu {
+    min-width: 350px;
+    padding: 0
 }

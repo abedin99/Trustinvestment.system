@@ -10,8 +10,17 @@
             </li>
         </ul>
         <ul class="nav-right">
-            <li class="notifications dropdown"><span class="counter bgc-red">3</span> <a href=""
-                    class="dropdown-toggle no-after" data-toggle="dropdown"><i class="ti-bell"></i></a>
+            <li class="balance border">
+                <a href="javascript:void(0);" class="no-after" >
+                    <i class="fa-solid fa-wallet text-primary"></i>
+                    <Strong>Balance: {{ Helper::showBalance(Auth::user()->balance) }}</Strong>
+                </a>
+            </li>
+            <li class="notifications dropdown">
+                <span class="counter bgc-red">3</span>
+                <a href="" class="dropdown-toggle no-after" data-toggle="dropdown">
+                    <i class="fa-solid fa-bell"></i>
+                </a>
                 <ul class="dropdown-menu">
                     <li class="pX-20 pY-15 bdB"><i class="ti-bell pR-10"></i> <span
                             class="fsz-sm fw-600 c-grey-900">Notifications</span></li>
@@ -19,10 +28,16 @@
                         <ul class="ovY-a pos-r scrollable lis-n p-0 m-0 fsz-sm">
                             <li>
                                 <a href="" class="peers fxw-nw td-n p-20 bdB c-grey-800 cH-blue bgcH-grey-100">
-                                    <div class="peer mR-15"><img class="w-3r bdrs-50p"
-                                            src="https://randomuser.me/api/portraits/men/1.jpg" alt=""></div>
-                                    <div class="peer peer-greed"><span><span class="fw-500">John Doe</span> <span
-                                                class="c-grey-600">liked your <span class="text-dark">post</span></span>
+                                    <div class="peer mR-15">
+                                        <img class="w-3r bdrs-50p" src="{https://randomuser.me/api/portraits/men/1.jpg}"
+                                            alt="">
+                                    </div>
+                                    <div class="peer peer-greed">
+                                        <span>
+                                            <span class="fw-500">John Doe</span>
+                                            <span class="c-grey-600">liked your
+                                                <span class="text-dark">post</span>
+                                            </span>
                                         </span>
                                         <p class="m-0"><small class="fsz-xs">5 mins ago</small></p>
                                     </div>
@@ -58,8 +73,11 @@
                                 All Notifications <i class="ti-angle-right fsz-xs mL-10"></i></a></span></li>
                 </ul>
             </li>
-            <li class="notifications dropdown"><span class="counter bgc-blue">3</span> <a href=""
-                    class="dropdown-toggle no-after" data-toggle="dropdown"><i class="ti-email"></i></a>
+            <li class="notifications dropdown">
+                <span class="counter bgc-blue">3</span>
+                <a href="" class="dropdown-toggle no-after" data-toggle="dropdown">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
                 <ul class="dropdown-menu">
                     <li class="pX-20 pY-15 bdB"><i class="ti-email pR-10"></i> <span
                             class="fsz-sm fw-600 c-grey-900">Emails</span></li>
@@ -125,9 +143,9 @@
             </li>
             <li class="dropdown">
                 <a href="" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1" data-toggle="dropdown">
-                    <div class="peer mR-10"><img class="w-2r bdrs-50p"
-                            src="https://randomuser.me/api/portraits/men/10.jpg" alt=""></div>
-                    <div class="peer"><span class="fsz-sm c-grey-900">John Doe</span></div>
+                    <div class="peer mR-10"><img class="w-2r bdrs-50p" src="{{ Helper::getAvatar(Auth::user()->avater) }}"
+                            alt=""></div>
+                    <div class="peer"><span class="fsz-sm c-grey-900">{{ Auth::user()->username }}</span></div>
                 </a>
                 <ul class="dropdown-menu fsz-sm">
                     <li><a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700"><i

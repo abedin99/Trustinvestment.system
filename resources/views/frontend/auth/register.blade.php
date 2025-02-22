@@ -33,7 +33,7 @@
                         </div>
                         <div class="card-body">
 
-                            <form method="POST" action="{{ route('login') }}">
+                            <form method="POST" action="{{ route('register') }}">
                                 @csrf
 
                                 <div class="form-group mb-3">

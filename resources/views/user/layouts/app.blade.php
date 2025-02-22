@@ -10,7 +10,10 @@
 
     @include('user.layouts.partials.loader')
 
+    <!-- stylesheet -->
     <link href="{{ asset('style.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/lib/fontawesome/css/all.min.css') }}" rel="stylesheet">
+
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -19,14 +22,7 @@
     <div id="loader">
         <div class="spinner"></div>
     </div>
-    <script>
-        window.addEventListener('load', function load() {
-            const loader = document.getElementById('loader');
-            setTimeout(function() {
-                loader.classList.add('fadeOut');
-            }, 300);
-        });
-    </script>
+
     <div>
         @include('user.layouts.partials.sidebar')
 
@@ -40,8 +36,20 @@
             @include('user.layouts.partials.footer')
         </div>
     </div>
+
     <script type="text/javascript" src="{{ asset('vendor.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundle.js') }}"></script>
+
+    <script>
+        window.addEventListener('load', function load() {
+            const loader = document.getElementById('loader');
+            setTimeout(function() {
+                loader.classList.add('fadeOut');
+            }, 300);
+        });
+    </script>
+
+    @include('sweetalert::alert')
 </body>
 
 </html>

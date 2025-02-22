@@ -30,20 +30,30 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
+            'referral_id' => ['nullable', 'string', 'max:255', 'exists:' . User::class . ',username'],
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+            'username' => ['required', 'string', 'lowercase', 'regex:/\w*$/', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'acknowledgment' => ['required'],
         ]);
 
+        $ref = User::where('username', $request->referral_id)->first();
+
         $user = User::create([
+            'ref_id' => $ref ? $ref->id : null,
             'name' => $request->name,
+            'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'acknowledgment' => $request->acknowledgment??null,
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
+
+        toast('You have Successfully Registered','success');
 
         return redirect(route('dashboard', absolute: false));
     }

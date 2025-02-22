@@ -19,6 +19,7 @@
     <div id="loader">
         <div class="spinner"></div>
     </div>
+
     <script>
         window.addEventListener('load', function load() {
             const loader = document.getElementById('loader');
@@ -27,9 +28,11 @@
             }, 300);
         });
     </script>
+
     <div class="w-100 ai-s fxw-nw h-100vh">
         {{ $slot }}
     </div>
+
     <script type="text/javascript" src="{{ asset('vendor.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundle.js') }}"></script>
 </body>

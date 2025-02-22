@@ -60,11 +60,16 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav mx-0 mx-lg-auto">
-                        <a href="{{ route('index') }}" class="nav-item nav-link {{ Request::routeIs('index') ? 'active' : null }}">Home</a>
-                        <a href="{{ route('about.index') }}" class="nav-item nav-link {{ Request::routeIs('about.*') ? 'active' : null }}">About</a>
-                        <a href="{{ route('pricing.index') }}" class="nav-item nav-link{{ Request::routeIs('pricing.*') ? 'active' : null }}">Pricing</a>
-                        <a href="{{ route('blog.index') }}" class="nav-item nav-link {{ Request::routeIs('blog.*') ? 'active' : null }}">Blog</a>
-                        <a href="{{ route('contact.index') }}" class="nav-item nav-link {{ Request::routeIs('contact.*') ? 'active' : null }}">Contact</a>
+                        <a href="{{ route('index') }}"
+                            class="nav-item nav-link {{ Request::routeIs('index') ? 'active' : null }}">Home</a>
+                        <a href="{{ route('about.index') }}"
+                            class="nav-item nav-link {{ Request::routeIs('about.*') ? 'active' : null }}">About</a>
+                        <a href="{{ route('pricing.index') }}"
+                            class="nav-item nav-link{{ Request::routeIs('pricing.*') ? 'active' : null }}">Pricing</a>
+                        <a href="{{ route('blog.index') }}"
+                            class="nav-item nav-link {{ Request::routeIs('blog.*') ? 'active' : null }}">Blog</a>
+                        <a href="{{ route('contact.index') }}"
+                            class="nav-item nav-link {{ Request::routeIs('contact.*') ? 'active' : null }}">Contact</a>
                         <div class="nav-btn px-3">
                             <a href="{{ route('login') }}"
                                 class="btn btn-primary rounded-pill py-2 px-4 ms-3 flex-shrink-0"> Login</a>
@@ -90,7 +95,8 @@
                             <div class="col-md-6 col-lg-6 col-xl-5">
                                 <div class="footer-item">
                                     <a href="index.html" class="p-0">
-                                        <h3 class="text-white"><i class="fab fa-slack me-3"></i> {{ Setting::get('app_name') }}</h3>
+                                        <h3 class="text-white"><i class="fab fa-slack me-3"></i>
+                                            {{ Setting::get('app_name') }}</h3>
                                         <!-- <img src="{{ asset('assets') }}/img/logo.png" alt="Logo"> -->
                                     </a>
                                     <p class="text-white mb-4">Dolor amet sit justo amet elitr clita ipsum elitr
@@ -276,7 +282,8 @@
             <div class="row g-4 align-items-center">
                 <div class="col-md-6 text-center text-md-end mb-md-0">
                     <span class="text-body"><a href="#" class="border-bottom text-white"><i
-                                class="fas fa-copyright text-light me-2"></i>{{ Setting::get('app_name') }}</a>, All right
+                                class="fas fa-copyright text-light me-2"></i>{{ Setting::get('app_name') }}</a>, All
+                        right
                         reserved.</span>
                 </div>
                 <div class="col-md-6 text-center text-md-start text-body">
