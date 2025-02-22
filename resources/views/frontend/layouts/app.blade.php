@@ -50,7 +50,7 @@
                 <a href="{{ route('index') }}" class="navbar-brand p-0">
                     <h4 class="text-primary mb-0 text-uppercase">
                         <i class="fab fa-slack me-2"></i>
-                        {{ config('app.name') }}
+                        {{ Setting::get('app_name') }}
                     </h4>
                     <!-- <img src="{{ asset('assets') }}/img/logo.png" alt="Logo"> -->
                 </a>
@@ -78,134 +78,6 @@
     </div>
     <!-- Navbar & Hero End -->
 
-    <!-- Carousel Start -->
-    <div class="header-carousel owl-carousel">
-        <div class="header-carousel-item bg-primary">
-            <div class="carousel-caption">
-                <div class="container">
-                    <div class="row g-4 align-items-center">
-                        <div class="col-lg-7 animated fadeInLeft">
-                            <div class="text-sm-center text-md-start">
-                                <h4 class="text-white text-uppercase fw-bold mb-4">Welcome To LifeSure</h4>
-                                <h1 class="display-1 text-white mb-4">Life Insurance Makes You Happy</h1>
-                                <p class="mb-5 fs-5">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                    industry. Lorem Ipsum has been the industry's standard dummy...
-                                </p>
-                                <div class="d-flex justify-content-center justify-content-md-start flex-shrink-0 mb-4">
-                                    <a class="btn btn-light rounded-pill py-3 px-4 px-md-5 me-2" href="#"><i
-                                            class="fas fa-play-circle me-2"></i> Watch Video</a>
-                                    <a class="btn btn-dark rounded-pill py-3 px-4 px-md-5 ms-2" href="#">Learn
-                                        More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-5 animated fadeInRight">
-                            <div class="calrousel-img" style="object-fit: cover;">
-                                <img src="{{ asset('assets') }}/img/carousel-2.png" class="img-fluid w-100"
-                                    alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="header-carousel-item bg-primary">
-            <div class="carousel-caption">
-                <div class="container">
-                    <div class="row gy-4 gy-lg-0 gx-0 gx-lg-5 align-items-center">
-                        <div class="col-lg-5 animated fadeInLeft">
-                            <div class="calrousel-img">
-                                <img src="{{ asset('assets') }}/img/carousel-2.png" class="img-fluid w-100"
-                                    alt="">
-                            </div>
-                        </div>
-                        <div class="col-lg-7 animated fadeInRight">
-                            <div class="text-sm-center text-md-end">
-                                <h4 class="text-white text-uppercase fw-bold mb-4">Welcome To LifeSure</h4>
-                                <h1 class="display-1 text-white mb-4">Life Insurance Makes You Happy</h1>
-                                <p class="mb-5 fs-5">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                    industry. Lorem Ipsum has been the industry's standard dummy...
-                                </p>
-                                <div class="d-flex justify-content-center justify-content-md-end flex-shrink-0 mb-4">
-                                    <a class="btn btn-light rounded-pill py-3 px-4 px-md-5 me-2" href="#"><i
-                                            class="fas fa-play-circle me-2"></i> Watch Video</a>
-                                    <a class="btn btn-dark rounded-pill py-3 px-4 px-md-5 ms-2" href="#">Learn
-                                        More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Carousel End -->
-
-    <!-- Feature Start -->
-    <div class="container-fluid feature bg-light py-5">
-        <div class="container py-5">
-            <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
-                <h4 class="text-primary">Our Features</h4>
-                <h1 class="display-4 mb-4">Insurance Provide you a Better Future</h1>
-                <p class="mb-0">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis
-                    cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt
-                    sint dolorem autem obcaecati, ipsam mollitia hic.
-                </p>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="feature-item p-4 pt-0">
-                        <div class="feature-icon p-4 mb-4">
-                            <i class="far fa-handshake fa-3x"></i>
-                        </div>
-                        <h4 class="mb-4">Trusted Company</h4>
-                        <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea hic laborum odit
-                            pariatur...
-                        </p>
-                        <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="feature-item p-4 pt-0">
-                        <div class="feature-icon p-4 mb-4">
-                            <i class="fa fa-dollar-sign fa-3x"></i>
-                        </div>
-                        <h4 class="mb-4">Anytime Money Back</h4>
-                        <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea hic laborum odit
-                            pariatur...
-                        </p>
-                        <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.6s">
-                    <div class="feature-item p-4 pt-0">
-                        <div class="feature-icon p-4 mb-4">
-                            <i class="fa fa-bullseye fa-3x"></i>
-                        </div>
-                        <h4 class="mb-4">Flexible Plans</h4>
-                        <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea hic laborum odit
-                            pariatur...
-                        </p>
-                        <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
-                    <div class="feature-item p-4 pt-0">
-                        <div class="feature-icon p-4 mb-4">
-                            <i class="fa fa-headphones fa-3x"></i>
-                        </div>
-                        <h4 class="mb-4">24/7 Fast Support</h4>
-                        <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea hic laborum odit
-                            pariatur...
-                        </p>
-                        <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Feature End -->
-
     @yield('content')
 
     <!-- Footer Start -->
@@ -218,7 +90,7 @@
                             <div class="col-md-6 col-lg-6 col-xl-5">
                                 <div class="footer-item">
                                     <a href="index.html" class="p-0">
-                                        <h3 class="text-white"><i class="fab fa-slack me-3"></i> LifeSure</h3>
+                                        <h3 class="text-white"><i class="fab fa-slack me-3"></i> {{ Setting::get('app_name') }}</h3>
                                         <!-- <img src="{{ asset('assets') }}/img/logo.png" alt="Logo"> -->
                                     </a>
                                     <p class="text-white mb-4">Dolor amet sit justo amet elitr clita ipsum elitr
@@ -404,7 +276,7 @@
             <div class="row g-4 align-items-center">
                 <div class="col-md-6 text-center text-md-end mb-md-0">
                     <span class="text-body"><a href="#" class="border-bottom text-white"><i
-                                class="fas fa-copyright text-light me-2"></i>{{ config('app.name') }}</a>, All right
+                                class="fas fa-copyright text-light me-2"></i>{{ Setting::get('app_name') }}</a>, All right
                         reserved.</span>
                 </div>
                 <div class="col-md-6 text-center text-md-start text-body">
@@ -434,9 +306,10 @@
     <script src="{{ asset('assets/lib/lightbox/js/lightbox.min.js') }}"></script>
     <script src="{{ asset('assets/lib/owlcarousel/owl.carousel.min.js') }}"></script>
 
-
     <!-- Template Javascript -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
+
+    @yield('script')
 </body>
 
 </html>

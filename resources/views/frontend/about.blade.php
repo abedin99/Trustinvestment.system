@@ -30,7 +30,7 @@
                         <div class="row g-4 justify-content-center">
                             <div class="col-12">
                                 <div class="rounded bg-light">
-                                    <img src="img/about-1.png" class="img-fluid rounded w-100" alt="">
+                                    <img src="{{ asset('assets') }}/img/about-1.png" class="img-fluid rounded w-100" alt="">
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -210,7 +210,7 @@
                     </div>
                 </div>
                 <div class="col-xl-6 wow fadeInRight" data-wow-delay="0.4s">
-                    <img src="img/carousel-2.png" class="img-fluid w-100" alt="">
+                    <img src="{{ asset('assets') }}/img/carousel-2.png" class="img-fluid w-100" alt="">
                 </div>
             </div>
         </div>
@@ -233,7 +233,7 @@
                 <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
                     <div class="team-item">
                         <div class="team-img">
-                            <img src="img/team-1.jpg" class="img-fluid rounded-top w-100" alt="">
+                            <img src="{{ asset('assets') }}/img/team-1.jpg" class="img-fluid rounded-top w-100" alt="">
                             <div class="team-icon">
                                 <a class="btn btn-primary btn-sm-square rounded-pill mb-2" href=""><i
                                         class="fab fa-facebook-f"></i></a>
@@ -254,7 +254,7 @@
                 <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.4s">
                     <div class="team-item">
                         <div class="team-img">
-                            <img src="img/team-2.jpg" class="img-fluid rounded-top w-100" alt="">
+                            <img src="{{ asset('assets') }}/img/team-2.jpg" class="img-fluid rounded-top w-100" alt="">
                             <div class="team-icon">
                                 <a class="btn btn-primary btn-sm-square rounded-pill mb-2" href=""><i
                                         class="fab fa-facebook-f"></i></a>
@@ -275,7 +275,7 @@
                 <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.6s">
                     <div class="team-item">
                         <div class="team-img">
-                            <img src="img/team-3.jpg" class="img-fluid rounded-top w-100" alt="">
+                            <img src="{{ asset('assets') }}/img/team-3.jpg" class="img-fluid rounded-top w-100" alt="">
                             <div class="team-icon">
                                 <a class="btn btn-primary btn-sm-square rounded-pill mb-2" href=""><i
                                         class="fab fa-facebook-f"></i></a>
@@ -296,7 +296,7 @@
                 <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
                     <div class="team-item">
                         <div class="team-img">
-                            <img src="img/team-4.jpg" class="img-fluid rounded-top w-100" alt="">
+                            <img src="{{ asset('assets') }}/img/team-4.jpg" class="img-fluid rounded-top w-100" alt="">
                             <div class="team-icon">
                                 <a class="btn btn-primary btn-sm-square rounded-pill mb-2" href=""><i
                                         class="fab fa-facebook-f"></i></a>

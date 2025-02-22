@@ -19,7 +19,7 @@
                 <div class="col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.2s">
                     <div class="blog-item">
                         <div class="blog-img">
-                            <img src="img/blog-1.png" class="img-fluid rounded-top w-100" alt="">
+                            <img src="{{ asset('assets') }}/img/blog-1.png" class="img-fluid rounded-top w-100" alt="">
                             <div class="blog-categiry py-2 px-4">
                                 <span>Business</span>
                             </div>
@@ -41,7 +41,7 @@
                 <div class="col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.4s">
                     <div class="blog-item">
                         <div class="blog-img">
-                            <img src="img/blog-2.png" class="img-fluid rounded-top w-100" alt="">
+                            <img src="{{ asset('assets') }}/img/blog-2.png" class="img-fluid rounded-top w-100" alt="">
                             <div class="blog-categiry py-2 px-4">
                                 <span>Business</span>
                             </div>
@@ -62,7 +62,7 @@
                 <div class="col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.6s">
                     <div class="blog-item">
                         <div class="blog-img">
-                            <img src="img/blog-3.png" class="img-fluid rounded-top w-100" alt="">
+                            <img src="{{ asset('assets') }}/img/blog-3.png" class="img-fluid rounded-top w-100" alt="">
                             <div class="blog-categiry py-2 px-4">
                                 <span>Business</span>
                             </div>
