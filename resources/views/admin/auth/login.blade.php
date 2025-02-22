@@ -65,6 +65,10 @@
                             {{ __('Forgot your password?') }}
                         </a>
                     @endif
+
+                    <a class="text-primary d-block mt-2" href="{{ route('index') }}">
+                        {{ __('Back to homepage') }}
+                    </a>
                 </div>
             </div>
         </div>

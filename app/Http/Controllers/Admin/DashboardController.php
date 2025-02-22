@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Artisan;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class DashboardController extends Controller
 {
@@ -16,50 +19,44 @@ class DashboardController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Geting the task for clearing a new resource.
      */
-    public function create()
+    public function clear(Request $request)
     {
-        //
+        Artisan::call('route:clear');
+        Artisan::call('cache:clear');
+        Artisan::call('config:clear');
+        Artisan::call('view:clear');
+        Artisan::call('optimize:clear');
+
+        if ($request->server('HTTP_REFERER')) {
+            Alert::success('Success!', 'Application optimized successfully!')->hideCloseButton()->autoClose(3000);
+            return redirect()->back();
+        }
+
+        toast("Application optimized successfully!", "success")->timerProgressBar();
+        return redirect()->route('index');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Migrate the task for all fresh new resource.
      */
-    public function store(Request $request)
+    public function migrateFresh(Request $request)
     {
-        //
-    }
+        if (!App::environment(['local', 'staging', 'test', 'testing'])) {
+            toast("You cannot run this command. App is running in production mode.", "error")->timerProgressBar();
+            return redirect()->route('index');
+        }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+        Artisan::call('migrate:fresh', ['--force' => true, '--seed' => true]);
+        $msg = "Migrate fresh command run successfully.";
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+        if ($request->server('HTTP_REFERER')) {
+            Alert::success('Success!', $msg)->hideCloseButton()->autoClose(3000);
+            return redirect()->back();
+        }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        toast($msg, "success")->timerProgressBar();
+        return redirect()->route('index');
     }
 }

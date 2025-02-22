@@ -45,6 +45,33 @@
     </div>
     <script type="text/javascript" src="{{ asset('vendor.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundle.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> 
+
+    @if (Route::has('admin.migrate.fresh'))
+        <script>
+            $(document).ready(function() {
+                $('.reset-system').on('click', function(event) {
+                    event.preventDefault(); // Prevent the default navigation
+
+                    let resetUrl = $(this).attr('href'); // Get the URL to navigate to
+
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "This will reset the system and cannot be undone!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#d33',
+                        cancelButtonColor: '#3085d6',
+                        confirmButtonText: 'Yes, reset it!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = resetUrl; // Redirect if confirmed
+                        }
+                    });
+                });
+            });
+        </script>
+    @endif
 
     @include('sweetalert::alert')
 </body>

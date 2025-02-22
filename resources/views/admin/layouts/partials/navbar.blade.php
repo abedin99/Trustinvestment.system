@@ -17,6 +17,22 @@
             </li>
         </ul>
         <ul class="nav-right">
+            @if (Route::has('admin.migrate.fresh'))
+                <li class="notifications border">
+                    <a href="{{ route('admin.migrate.fresh') }}" class="no-after text-danger reset-system">
+                        <i class="fa-solid fa-trash"></i>
+                        <strong>Reset system</strong>
+                    </a>
+                </li>
+            @endif
+            @if (Route::has('admin.clear'))
+                <li class="notifications border">
+                    <a href="{{ route('admin.clear') }}" class="no-after text-success">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        <strong>Cache clear</strong>
+                    </a>
+                </li>
+            @endif
             <li class="notifications dropdown">
                 <span class="counter bgc-red">3</span>
                 <a href="" class="dropdown-toggle no-after" data-toggle="dropdown">

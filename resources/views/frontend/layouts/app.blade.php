@@ -70,11 +70,25 @@
                             class="nav-item nav-link {{ Request::routeIs('blog.*') ? 'active' : null }}">Blog</a>
                         <a href="{{ route('contact.index') }}"
                             class="nav-item nav-link {{ Request::routeIs('contact.*') ? 'active' : null }}">Contact</a>
+
                         <div class="nav-btn px-3">
-                            <a href="{{ route('login') }}"
-                                class="btn btn-primary rounded-pill py-2 px-4 ms-3 flex-shrink-0"> Login</a>
-                            <a href="{{ route('register') }}"
-                                class="btn btn-success rounded-pill py-2 px-4 ms-3 flex-shrink-0"> Register</a>
+                            @auth
+                                <a href="{{ route('login') }}"
+                                    class="btn btn-success rounded-pill py-2 px-4 ms-3 flex-shrink-0"> Dashboard</a>
+
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+
+                                    <button type="submit" class="btn btn-danger rounded-pill py-2 px-4 ms-3 flex-shrink-0">
+                                        {{ __('Log Out') }}
+                                    </button>
+                                </form>
+                            @else
+                                <a href="{{ route('login') }}"
+                                    class="btn btn-primary rounded-pill py-2 px-4 ms-3 flex-shrink-0"> Login</a>
+                                <a href="{{ route('register') }}"
+                                    class="btn btn-success rounded-pill py-2 px-4 ms-3 flex-shrink-0"> Register</a>
+                            @endauth
                         </div>
                     </div>
                 </div>
