@@ -1854,3 +1854,7 @@ a.fc-more:hover {
 .nav-item.actived .sidebar-link{
     color: #f1f1f1 !important;
 }
+
+.sidebar .actived .icon-holder i{
+    color: #fff !important;
+}

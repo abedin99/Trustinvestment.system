@@ -6,7 +6,8 @@
                     <a class="sidebar-link td-n" href="{{ route('admin.dashboard') }}">
                         <div class="peers ai-c fxw-nw">
                             <div class="peer">
-                                <div class="logo"><img src="{{ asset("assets/static/images/logo.png") }}" alt=""></div>
+                                <div class="logo"><img src="{{ asset('assets/static/images/logo.png') }}"
+                                        alt=""></div>
                             </div>
                             <div class="peer peer-greed">
                                 <h5 class="lh-1 mB-0 logo-text">{{ config('app.name') }}</h5>
@@ -24,7 +25,7 @@
             </div>
         </div>
         <ul class="sidebar-menu scrollable pos-r">
-            <li class="nav-item mT-30 {{ Request::routeIs('dashboard') ? 'actived' : null }}">
+            <li class="nav-item mT-30 {{ Request::routeIs('admin.dashboard') ? 'actived' : null }}">
                 <a class="sidebar-link" href="{{ route('admin.dashboard') }}">
                     <span class="icon-holder">
                         <i class="c-blue-500 fa-solid fa-gauge"></i>
@@ -32,62 +33,68 @@
                     <span class="title">Dashboard</span>
                 </a>
             </li>
-            <li class="nav-item"><a class="sidebar-link" href="/demo/email"><span class="icon-holder"><i
-                            class="c-brown-500 ti-email"></i> </span><span class="title">Email</span></a></li>
-            <li class="nav-item"><a class="sidebar-link" href="/demo/compose"><span class="icon-holder"><i
-                            class="c-blue-500 ti-share"></i> </span><span class="title">Compose</span></a></li>
-            <li class="nav-item"><a class="sidebar-link" href="/demo/calendar"><span class="icon-holder"><i
-                            class="c-deep-orange-500 ti-calendar"></i> </span><span class="title">Calendar</span></a>
+            <li class="nav-item {{ Request::routeIs('admin.packages.*') ? 'actived' : null }}">
+                <a class="sidebar-link" href="{{ route('admin.packages.index') }}">
+                    <span class="icon-holder"><i class="c-brown-500 fa-solid fa-cubes"></i></span>
+                    <span class="title">Packages</span>
+                </a>
             </li>
-            <li class="nav-item"><a class="sidebar-link" href="/demo/chat"><span class="icon-holder"><i
-                            class="c-deep-purple-500 ti-comment-alt"></i> </span><span class="title">Chat</span></a>
+            <li class="nav-item">
+                <a class="sidebar-link" href="#">
+                    <span class="icon-holder"><i class="c-blue-500 fa-solid fa-users"></i> </span>
+                    <span class="title">Users</span>
+                </a>
             </li>
-            <li class="nav-item"><a class="sidebar-link" href="/demo/charts"><span class="icon-holder"><i
-                            class="c-indigo-500 ti-bar-chart"></i> </span><span class="title">Charts</span></a></li>
-            <li class="nav-item"><a class="sidebar-link" href="/demo/forms"><span class="icon-holder"><i
-                            class="c-light-blue-500 ti-pencil"></i> </span><span class="title">Forms</span></a></li>
-            <li class="nav-item dropdown"><a class="sidebar-link" href="/demo/ui"><span class="icon-holder"><i
-                            class="c-pink-500 ti-palette"></i> </span><span class="title">UI Elements</span></a></li>
-            <li class="nav-item dropdown"><a class="dropdown-toggle" href="javascript:void(0);"><span
-                        class="icon-holder"><i class="c-orange-500 ti-layout-list-thumb"></i> </span><span
-                        class="title">Tables</span> <span class="arrow"><i class="ti-angle-right"></i></span></a>
+            <li class="nav-item">
+                <a class="sidebar-link" href="#">
+                    <span class="icon-holder"><i class="c-deep-orange-500 fa-solid fa-hand-holding-dollar"></i></span>
+                    <span class="title">Deposit Method</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="sidebar-link" href="#">
+                    <span class="icon-holder"><i class="c-deep-purple-500 fa-solid fa-money-bill-transfer"></i> </span>
+                    <span class="title">Withdraw Method</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="sidebar-link" href="#">
+                    <span class="icon-holder"><i class="c-indigo-500 fa-solid fa-receipt"></i> </span>
+                    <span class="title">Transaction</span>
+                </a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="dropdown-toggle" href="javascript:void(0);">
+                    <span class="icon-holder"><i class="c-light-blue-500 fa-solid fa-flag"></i></span>
+                    <span class="title">Reports</span>
+                    <span class="arrow"><i class="fa-solid fa-angle-right"></i></span>
+                </a>
                 <ul class="dropdown-menu">
-                    <li><a class="sidebar-link" href="/demo/basic-table">Basic Table</a></li>
-                    <li><a class="sidebar-link" href="/demo/datatable">Data Table</a></li>
+                    <li><a class="sidebar-link" href="#">Profit And Loss</a></li>
+                    <li><a class="sidebar-link" href="#">User DP Report </a></li>
+                    <li><a class="sidebar-link" href="#">Sell Report</a></li>
+                    <li><a class="sidebar-link" href="#">Balance Report</a></li>
+                    <li><a class="sidebar-link" href="#">Deposit Report</a></li>
+                    <li><a class="sidebar-link" href="#">Withdrawal Report</a></li>
                 </ul>
             </li>
-            <li class="nav-item dropdown"><a class="dropdown-toggle" href="javascript:void(0);"><span
-                        class="icon-holder"><i class="c-purple-500 ti-map"></i> </span><span class="title">Maps</span>
-                    <span class="arrow"><i class="ti-angle-right"></i></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="/demo/google-maps">Google Map</a></li>
-                    <li><a href="/demo/vector-maps">Vector Map</a></li>
-                </ul>
+            <li class="nav-item dropdown">
+                <a class="sidebar-link" href="#">
+                    <span class="icon-holder"><i class="c-pink-500 fa-solid fa-headset"></i> </span>
+                    <span class="title">Support Ticket</span>
+                </a>
             </li>
-            <li class="nav-item dropdown"><a class="dropdown-toggle" href="javascript:void(0);"><span
-                        class="icon-holder"><i class="c-red-500 ti-files"></i> </span><span class="title">Pages</span>
-                    <span class="arrow"><i class="ti-angle-right"></i></span></a>
+            <li class="nav-item dropdown">
+                <a class="dropdown-toggle" href="javascript:void(0);">
+                    <span class="icon-holder"><i class="c-red-500 fa-solid fa-gears"></i></span>
+                    <span class="title">Settings</span>
+                    <span class="arrow"><i class="fa-solid fa-angle-right"></i></span>
+                </a>
                 <ul class="dropdown-menu">
-                    <li><a class="sidebar-link" href="/demo/blank">Blank</a></li>
-                    <li><a class="sidebar-link" href="/demo/404">404</a></li>
-                    <li><a class="sidebar-link" href="/demo/500">500</a></li>
-                    <li><a class="sidebar-link" href="/demo/signin">Sign In</a></li>
-                    <li><a class="sidebar-link" href="/demo/signup">Sign Up</a></li>
-                </ul>
-            </li>
-            <li class="nav-item dropdown"><a class="dropdown-toggle" href="javascript:void(0);"><span
-                        class="icon-holder"><i class="c-teal-500 ti-view-list-alt"></i> </span><span
-                        class="title">Multiple Levels</span> <span class="arrow"><i
-                            class="ti-angle-right"></i></span></a>
-                <ul class="dropdown-menu">
-                    <li class="nav-item dropdown"><a href="javascript:void(0);"><span>Menu Item</span></a></li>
-                    <li class="nav-item dropdown"><a href="javascript:void(0);"><span>Menu Item</span> <span
-                                class="arrow"><i class="ti-angle-right"></i></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="javascript:void(0);">Menu Item</a></li>
-                            <li><a href="javascript:void(0);">Menu Item</a></li>
-                        </ul>
-                    </li>
+                    <li><a class="sidebar-link" href="#">Configurations</a></li>
+                    <li><a class="sidebar-link" href="#">User DP Setting</a></li>
+                    <li><a class="sidebar-link" href="#">Currencies</a></li>
+                    <li><a class="sidebar-link" href="#">Language</a></li>
                 </ul>
             </li>
         </ul>

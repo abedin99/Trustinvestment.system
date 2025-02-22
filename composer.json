@@ -14,7 +14,9 @@
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "realrashid/sweet-alert": "^7.2",
-        "spatie/laravel-activitylog": "^4.10"
+        "spatie/laravel-activitylog": "^4.10",
+        "yajra/laravel-datatables": "^11.0",
+        "yajra/laravel-datatables-oracle": "^11.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.14",
