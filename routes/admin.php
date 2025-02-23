@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -81,6 +82,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/migrate:fresh', [DashboardController::class, 'migrateFresh'])->name('migrate.fresh');
 
         Route::resource('/packages', PackageController::class);
+        Route::resource('/users', UserController::class);
 
     });
 });

@@ -14,8 +14,16 @@
     <link href="{{ asset('style.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/lib/fontawesome/css/all.min.css') }}" rel="stylesheet">
 
+    @isset($header_components)
+        {{ $header_components }}
+    @endisset
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    @isset($css)
+        <!-- Custom style -->
+        {{ $css }}
+    @endisset
 </head>
 
 <body class="app">
@@ -45,7 +53,7 @@
     </div>
     <script type="text/javascript" src="{{ asset('vendor.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundle.js') }}"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     @if (Route::has('admin.migrate.fresh'))
         <script>
@@ -73,7 +81,17 @@
         </script>
     @endif
 
+    @isset($footer_components)
+        <!-- Optional JS -->
+        {{ $footer_components }}
+    @endisset
+
     @include('sweetalert::alert')
+
+    @isset($js)
+        <!-- Custom js -->
+        {{ $js }}
+    @endisset
 </body>
 
 </html>

@@ -39,8 +39,8 @@
                     <span class="title">Packages</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="sidebar-link" href="#">
+            <li class="nav-item {{ Request::routeIs('admin.users.*') ? 'actived' : null }}">
+                <a class="sidebar-link" href="{{ route('admin.users.index') }}">
                     <span class="icon-holder"><i class="c-blue-500 fa-solid fa-users"></i> </span>
                     <span class="title">Users</span>
                 </a>
