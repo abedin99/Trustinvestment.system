@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\ProfileUpdateRequest;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
+use App\Models\Admin;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Redirect;
+use RealRashid\SweetAlert\Facades\Alert;
+use App\Http\Requests\AdminProfileUpdateRequest;
 
 class ProfileController extends Controller
 {
@@ -17,15 +19,21 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
-        return view('admin.profile.edit', [
-            'user' => $request->user(),
+        activity()
+            ->performedOn(new Admin())
+            ->causedBy(Auth::user())
+            ->event('visited')
+            ->log('Profile edit page visited.');
+
+        return view('profile.edit', [
+            'user' => $request->user('admin'),
         ]);
     }
 
     /**
      * Update the user's profile information.
      */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
+    public function update(AdminProfileUpdateRequest $request): RedirectResponse
     {
         $request->user()->fill($request->validated());
 
@@ -35,7 +43,9 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        Alert::success('Success!', 'Your profile updated successfully.')->hideCloseButton()->autoClose(3000);
+
+        return Redirect::route('admin.profile.edit')->with('status', 'profile-updated');
     }
 
     /**
@@ -47,15 +57,17 @@ class ProfileController extends Controller
             'password' => ['required', 'current_password'],
         ]);
 
-        $user = $request->user();
+        $user = $request->user('admin');
 
-        Auth::logout();
+        Auth::guard('admin')->logout();
 
         $user->delete();
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return Redirect::to('/');
+        Alert::success('Success!', 'Your profile destroyed successfully.')->hideCloseButton()->autoClose(3000);
+
+        return Redirect::route('admin.login');
     }
 }

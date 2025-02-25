@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\AdminLoginRequest;
+use App\Models\Admin;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +17,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
-        return view('admin.auth.login');
+        return view('auth.login');
     }
 
     /**
@@ -28,7 +29,13 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        toast('You\'re logged in as a admin!','success');
+        $admin = Admin::whereEmail($request->email)->firstOrFail();
+
+        activity()
+            ->performedOn($admin)
+            ->causedBy($admin)
+            ->event('logged in')
+            ->log('logged in on '.$request->userAgent());
 
         return redirect()->intended(route('admin.dashboard', absolute: false));
     }
@@ -38,6 +45,14 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        $admin = Admin::whereEmail($request->user()->email)->firstOrFail();
+
+        activity()
+            ->performedOn($admin)
+            ->causedBy($admin)
+            ->event('logged out')
+            ->log('logged out from '.$request->userAgent());
+
         Auth::guard('admin')->logout();
 
         $request->session()->invalidate();

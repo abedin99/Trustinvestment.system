@@ -13,16 +13,17 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('ref_id')->nullable()->constrained()->on('users')->cascadeOnDelete();
             $table->string('name', 255);
-            $table->string('username', 255)->unique();
+            $table->string('username', 255);
             $table->string('email', 255)->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->rememberToken();
             $table->string('password', 255);
             $table->string('avater', 255)->nullable();
             $table->decimal('balance', 11)->default(0);
             $table->boolean('acknowledgment')->default(0);
+            $table->timestamp('banned_at')->nullable();
+            $table->timestamp('disabled_at')->nullable();
+            $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -35,6 +36,7 @@ return new class extends Migration
 
         Schema::create('sessions', function (Blueprint $table) {
             $table->string('id')->primary();
+            $table->foreignId('admin_id')->nullable()->index();
             $table->foreignId('user_id')->nullable()->index();
             $table->string('ip_address', 45)->nullable();
             $table->text('user_agent')->nullable();

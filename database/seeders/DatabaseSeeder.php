@@ -14,16 +14,12 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            UserTableSeeder::class,
+            AdminPermissionTableSeeder::class,
+            UserPermissionTableSeeder::class,
+            RoleTableSeeder::class,
             AdminTableSeeder::class,
-            SettingTableSeeder::class,
-            CurrencyTableSeeder::class,
-        ]);
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'username' => 'test',
-            'email' => 'test@example.com',
+            UserTableSeeder::class,
+            SettingsTableSeeder::class,
         ]);
     }
 }

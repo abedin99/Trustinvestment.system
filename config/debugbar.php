@@ -15,7 +15,6 @@ return [
      */
 
     'enabled' => env('DEBUGBAR_ENABLED', null),
-    'hide_empty_tabs' => false, // Hide tabs until they have content
     'except' => [
         'telescope*',
         'horizon*',
@@ -26,7 +25,7 @@ return [
      | Storage settings
      |--------------------------------------------------------------------------
      |
-     | Debugbar stores data for session/ajax requests.
+     | DebugBar stores data for session/ajax requests.
      | You can disable this, so the debugbar stores data in headers/session,
      | but this can cause problems with large data collectors.
      | By default, file storage (in the storage folder) is used. Redis and PDO
@@ -184,7 +183,6 @@ return [
         'models'          => true,  // Display models
         'livewire'        => true,  // Display Livewire (when available)
         'jobs'            => false, // Display dispatched jobs
-        'pennant'         => false, // Display Pennant feature flags
     ],
 
     /*
@@ -214,18 +212,16 @@ return [
         ],
         'db' => [
             'with_params'       => true,   // Render SQL with the parameters substituted
-            'exclude_paths'     => [       // Paths to exclude entirely from the collector
-//                'vendor/laravel/framework/src/Illuminate/Session', // Exclude sessions queries
-            ],
             'backtrace'         => true,   // Use a backtrace to find the origin of the query in your files.
             'backtrace_exclude_paths' => [],   // Paths to exclude from backtrace. (in addition to defaults)
             'timeline'          => false,  // Add the queries to the timeline
             'duration_background'  => true,   // Show shaded background on each query relative to how long it took to execute.
             'explain' => [                 // Show EXPLAIN output on queries
                 'enabled' => false,
+                'types' => ['SELECT'],     // Deprecated setting, is always only SELECT
             ],
-            'hints'             => false,   // Show hints for common mistakes
-            'show_copy'         => true,    // Show copy button next to the query,
+            'hints'             => false,    // Show hints for common mistakes
+            'show_copy'         => false,    // Show copy button next to the query,
             'slow_threshold'    => false,   // Only track queries that last longer than this time in ms
             'memory_usage'      => false,   // Show queries memory usage
             'soft_limit'       => 100,      // After the soft limit, no parameters/backtrace are captured
@@ -237,29 +233,29 @@ return [
         ],
         'views' => [
             'timeline' => false,    // Add the views to the timeline (Experimental)
-            'data' => false,        // True for all data, 'keys' for only names, false for no parameters.
+            'data' => false,        //true for all data, 'keys' for only names, false for no parameters.
             'group' => 50,          // Group duplicate views. Pass value to auto-group, or true/false to force
             'exclude_paths' => [    // Add the paths which you don't want to appear in the views
                 'vendor/filament'   // Exclude Filament components by default
             ],
         ],
         'route' => [
-            'label' => true,  // Show complete route on bar
+            'label' => true,  // show complete route on bar
         ],
         'session' => [
-            'hiddens' => [], // Hides sensitive values using array paths
+            'hiddens' => [], // hides sensitive values using array paths
         ],
         'symfony_request' => [
-            'hiddens' => [], // Hides sensitive values using array paths, example: request_request.password
+            'hiddens' => [], // hides sensitive values using array paths, example: request_request.password
         ],
         'events' => [
-            'data' => false, // Collect events data, listeners
+            'data' => false, // collect events data, listeners
         ],
         'logs' => [
             'file' => null,
         ],
         'cache' => [
-            'values' => true, // Collect cache values
+            'values' => true, // collect cache values
         ],
     ],
 
@@ -278,10 +274,10 @@ return [
 
     /*
      |--------------------------------------------------------------------------
-     | Debugbar route prefix
+     | DebugBar route prefix
      |--------------------------------------------------------------------------
      |
-     | Sometimes you want to set route prefix to be used by Debugbar to load
+     | Sometimes you want to set route prefix to be used by DebugBar to load
      | its resources from. Usually the need comes from misconfigured web server or
      | from trying to overcome bugs like this: http://trac.nginx.org/nginx/ticket/97
      |
@@ -290,7 +286,7 @@ return [
 
     /*
      |--------------------------------------------------------------------------
-     | Debugbar route middleware
+     | DebugBar route middleware
      |--------------------------------------------------------------------------
      |
      | Additional middleware to run on the Debugbar routes
@@ -299,17 +295,17 @@ return [
 
     /*
      |--------------------------------------------------------------------------
-     | Debugbar route domain
+     | DebugBar route domain
      |--------------------------------------------------------------------------
      |
-     | By default Debugbar route served from the same domain that request served.
+     | By default DebugBar route served from the same domain that request served.
      | To override default domain, specify it as a non-empty value.
      */
     'route_domain' => null,
 
     /*
      |--------------------------------------------------------------------------
-     | Debugbar theme
+     | DebugBar theme
      |--------------------------------------------------------------------------
      |
      | Switches between light and dark theme. If set to auto it will respect system preferences
@@ -322,7 +318,7 @@ return [
      | Backtrace stack limit
      |--------------------------------------------------------------------------
      |
-     | By default, the Debugbar limits the number of frames returned by the 'debug_backtrace()' function.
+     | By default, the DebugBar limits the number of frames returned by the 'debug_backtrace()' function.
      | If you need larger stacktraces, you can increase this number. Setting it to 0 will result in no limit.
      */
     'debug_backtrace_limit' => 50,

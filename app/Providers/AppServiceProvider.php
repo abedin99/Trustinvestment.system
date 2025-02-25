@@ -3,6 +3,10 @@
 namespace App\Providers;
 
 use Illuminate\Http\Request;
+use App\Http\Helpers\Permission;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Auth\Middleware\RedirectIfAuthenticated;
@@ -14,7 +18,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        // dynamically set the root view based on whether the route is backend or frontend
+        // can also be done in a middleware that wraps all admin routes
+
+        if (request()->is('admin/*') or request()->is('admin')) {
+            View::getFinder()->setPaths([
+                resource_path('admin')
+            ]);
+        }
+
+
     }
 
     /**
@@ -22,6 +35,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Paginator::useBootstrap();
+
+        Blade::if('permit', function ($name) {
+            return Permission::permit($name);
+        });
+
+        Blade::if('access', function ($name) {
+            return Permission::access($name);
+        });
+
         // Specify the callback that should be used to generate the redirect path.
         Authenticate::redirectUsing(function (Request $request) {
             if (!$request->expectsJson() && $request->routeIs('admin.*')) {
@@ -43,5 +66,6 @@ class AppServiceProvider extends ServiceProvider
                 return route('dashboard');
             }
         });
+
     }
 }
