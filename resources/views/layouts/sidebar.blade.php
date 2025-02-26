@@ -33,6 +33,14 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a href="{{ route('deposits.index') }}"
+                        class="nav-link {{ Request::routeIs('deposits.*') ? 'active' : null }}">
+                        <i class="nav-icon fas fa-money-bill"></i>
+                        <p>Deposit</p>
+                    </a>
+                </li>
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

@@ -22,6 +22,8 @@ return Application::configure(basePath: dirname(__DIR__))
             'admin.banned' => App\Http\Middleware\CheckAdminBanned::class,
             'admin.disabled' => App\Http\Middleware\CheckAdminDisabled::class,
             'admin.last.activity' => \App\Http\Middleware\LastAdminActivity::class,
+            'check.agent.banned' => \App\Http\Middleware\CheckAgentBanned::class,
+            'check.agent.status' => \App\Http\Middleware\CheckAgentStatus::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

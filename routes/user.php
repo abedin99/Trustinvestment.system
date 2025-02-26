@@ -1,18 +1,20 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\User\ProfileController;
-use App\Http\Controllers\User\DashboardController;
-use App\Http\Controllers\User\Auth\PasswordController;
-use App\Http\Controllers\User\ProfilePasswordController;
-use App\Http\Controllers\User\Auth\NewPasswordController;
-use App\Http\Controllers\User\Auth\VerifyEmailController;
-use App\Http\Controllers\User\Auth\RegisteredUserController;
-use App\Http\Controllers\User\Auth\PasswordResetLinkController;
-use App\Http\Controllers\User\Auth\ConfirmablePasswordController;
+use App\Http\Controllers\User\AgentPanel\DepositController;
 use App\Http\Controllers\User\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\User\Auth\EmailVerificationPromptController;
+use App\Http\Controllers\User\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\User\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\User\Auth\EmailVerificationPromptController;
+use App\Http\Controllers\User\Auth\NewPasswordController;
+use App\Http\Controllers\User\Auth\PasswordController;
+use App\Http\Controllers\User\Auth\PasswordResetLinkController;
+use App\Http\Controllers\User\Auth\RegisteredUserController;
+use App\Http\Controllers\User\Auth\VerifyEmailController;
+use App\Http\Controllers\User\DashboardController;
+use App\Http\Controllers\User\ProfileController;
+use App\Http\Controllers\User\ProfilePasswordController;
+use Illuminate\Support\Facades\Route;
+
 
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
@@ -72,4 +74,16 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'verified', 'user.disabled', 'user.banned', 'user.last.activity'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    // Deposit routes
+    Route::prefix('/deposits')->name('deposits.')->group(function () {
+        Route::get('/pending', [DepositController::class, 'pending'])->name('pending');
+        Route::get('/rejected', [DepositController::class, 'rejected'])->name('rejected');
+        Route::get('/approved', [DepositController::class, 'approved'])->name('approved');
+        Route::post('/reject', [DepositController::class, 'reject'])->name('reject');
+        Route::post('/approve', [DepositController::class, 'approve'])->name('approve');
+        Route::get('/{scope}/search', [DepositController::class, 'search'])->name('search');
+        Route::get('/filter', [DepositController::class, 'filter'])->name('filter');
+    });
+    Route::resource('deposits', DepositController::class);
 });
