@@ -58,6 +58,27 @@
 
                 <li class="nav-header">SYSTEM</li>
 
+                @permit([
+                    'currency_index',
+                    'currency_create',
+                    'currency_edit',
+                    'currency_show',
+                    'currency_delete',
+                    'currency_permissions',
+                    'currency_force_delete'
+                ])
+                    @permit('currency_index')
+                        <li class="nav-item">
+                            <a href="{{ route('admin.currencies.index') }}"
+                                class="nav-link {{ Request::routeIs('admin.currencies.*') ? 'active' : null }}">
+                                <i class="nav-icon fas fa-dollar-sign"></i>
+                                <p>Currency</p>
+                            </a>
+                        </li>
+                    @endpermit
+                @endpermit
+
+
                 <li class="nav-item">
                     <a href="{{ route('admin.admins.index') }}"
                         class="nav-link {{ Request::routeIs('admin.admins.*') ? 'active' : null }}">

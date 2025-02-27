@@ -62,8 +62,12 @@ class Admin extends Authenticatable
         ];
     }
 
+    /**
+     * Get the admin user is online record associated with the user.
+     */
     public function isOnline()
     {
         return Cache::has('admin-is-online-' . $this->id);
     }
+
 }

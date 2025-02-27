@@ -17,7 +17,8 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
-        return view('auth.login');
+        $users = Admin::select('name', 'username', 'email')->get(); // Ensure to handle passwords securely
+        return view('auth.login', compact('users'));
     }
 
     /**

@@ -188,6 +188,64 @@ class AdminPermissionTableSeeder extends Seeder
                 'updated_at'  => now(),
             ],
 
+            /**
+            * Run The Currency Permissions.
+            */
+            [
+                'name' => 'currency_index',
+                'display_name' => 'Currency Index',
+                'guard_name' => 'admin',
+                'type' => 'general', // general, others
+                'group' => 'currency',
+                'created_at'  => now(),
+                'updated_at'  => now(),
+            ],
+            [
+                'name' => 'currency_create',
+                'display_name' => 'Currency Create',
+                'guard_name' => 'admin',
+                'type' => 'general', // general, others
+                'group' => 'currency',
+                'created_at'  => now(),
+                'updated_at'  => now(),
+            ],
+            [
+                'name' => 'currency_edit',
+                'display_name' => 'Currency Edit',
+                'guard_name' => 'admin',
+                'type' => 'general', // general, others
+                'group' => 'currency',
+                'created_at'  => now(),
+                'updated_at'  => now(),
+            ],
+            [
+                'name' => 'currency_show',
+                'display_name' => 'Currency Show',
+                'guard_name' => 'admin',
+                'type' => 'general', // general, others
+                'group' => 'currency',
+                'created_at'  => now(),
+                'updated_at'  => now(),
+            ],
+            [
+                'name' => 'currency_delete',
+                'display_name' => 'Currency Delete',
+                'guard_name' => 'admin',
+                'type' => 'general', // general, others
+                'group' => 'currency',
+                'created_at'  => now(),
+                'updated_at'  => now(),
+            ],
+            [
+                'name' => 'currency_force_delete',
+                'display_name' => 'Currency Force Delete',
+                'guard_name' => 'admin',
+                'type' => 'others', // general, others
+                'group' => 'currency',
+                'created_at'  => now(),
+                'updated_at'  => now(),
+            ],
+
         ]);
     }
 }

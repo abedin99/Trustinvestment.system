@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             RoleTableSeeder::class,
             AdminTableSeeder::class,
             UserTableSeeder::class,
+            CurrencyTableSeeder::class,
             SettingsTableSeeder::class,
         ]);
     }

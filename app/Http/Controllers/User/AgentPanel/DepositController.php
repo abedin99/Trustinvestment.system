@@ -35,17 +35,18 @@ class DepositController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        if (!auth()->user()->agent) {
+        $user = Auth::user();
+
+        if (!$user->agent) {
             return abort(404);
         }
 
         $page_title = 'Agent Panel Deposit List';
 
-        $user = Auth::user();
-
         $empty_message = 'No deposit history available.';
+
         $deposits = Deposit::where('status', '!=', 0)
             ->where('agent_id', $user->agent->id)
             ->whereBetween('created_at', [Carbon::now()->subMonth(1), Carbon::now()])
@@ -53,7 +54,7 @@ class DepositController extends Controller
             ->latest()
             ->paginate(config('constants.table.default'));
 
-        return view(activeTemplate() . 'user.agent-panel.deposits.index', compact('page_title', 'deposits', 'empty_message'));
+        return view('agent-panel.deposits.index', compact('page_title', 'deposits', 'empty_message'));
     }
 
 
@@ -73,6 +74,7 @@ class DepositController extends Controller
                         ->orWhereJsonContains('detail', ['transaction-id' => $search]);
                 });
             });
+
         switch ($scope) {
             case 'pending':
                 $page_title .= 'Pending Deposits Search';

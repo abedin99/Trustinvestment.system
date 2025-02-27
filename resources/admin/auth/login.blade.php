@@ -5,9 +5,21 @@
     </x-slot>
 
     <x-slot name="css">
+        <style rel="stylesheet">
+            body {
+                background: url('{{ asset('/images/admin-login-bg.jpg') }}');
+                background-repeat: no-repeat;
+                background-size: cover;
+                backdrop-filter: blur(2px);
+            }
 
+            .login-box,
+            .register-box {
+                width: 460px;
+            }
+        </style>
     </x-slot>
-    
+
     <x-slot name="js">
         <script>
             $(document).ready(function() {
@@ -23,6 +35,20 @@
                         passwordField.attr('type', 'password');
                         icon.removeClass('fa-eye-slash').addClass('fa-eye');
                     }
+                });
+            });
+        </script>
+
+        <script>
+            $(document).ready(function() {
+                // Handle copy button click
+                $('.copy-btn').on('click', function() {
+                    const email = $(this).data('email');
+                    const password = $(this).data('password');
+
+                    // Set the values in the login form
+                    $('#email').val(email);
+                    $('#password').val(password);
                 });
             });
         </script>
@@ -49,7 +75,7 @@
                 <form action="{{ route('admin.login') }}" method="post">
                     @csrf
                     <div class="input-group mb-3">
-                        <input type="email" name="email" value="{{ old('email') }}" class="form-control"
+                        <input type="email" name="email" value="{{ old('email') }}" class="form-control" id="email"
                             placeholder="Email">
                         <div class="input-group-append">
                             <div class="input-group-text">
@@ -59,7 +85,8 @@
                     </div>
 
                     <div class="input-group mb-3">
-                        <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+                        <input type="password" name="password" class="form-control" id="password"
+                            placeholder="Password">
                         <div class="input-group-append">
                             <button class="btn btn-outline-secondary" type="button" id="togglePassword">
                                 <i class="fas fa-eye"></i>
@@ -114,6 +141,35 @@
                         <a href="{{ route('login') }}" class="text-center">Login As User</a>
                     </p>
                 @endif
+
+                <hr>
+                <div class="table-responsive table-responsive-lg w-100">
+                    <table class="table table-bordered table-hover user-list-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($users as $index => $user)
+                                <tr>
+                                    <td>{{ $index + 1 }}</td>
+                                    <td>{{ $user->username }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-info copy-btn" data-email="{{ $user->email }}"
+                                            data-password="12345678">
+                                            Copy
+                                        </button>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <!-- /.card-body -->
         </div>

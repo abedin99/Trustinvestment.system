@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\HasPermit;
+
 use App\Http\Controllers\Admin\Auth\{
     PasswordController,
     NewPasswordController,
@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\Auth\{
     EmailVerificationPromptController,
     EmailVerificationNotificationController,
 };
+
 use App\Http\Controllers\Admin\{
     DashboardController,
     ProfileController,
@@ -20,6 +21,7 @@ use App\Http\Controllers\Admin\{
     AdminUsersController,
     RoleController,
     UsersController,
+    CurrenciesController,
 };
 
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -91,6 +93,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('admins', AdminUsersController::class);
         Route::post('roles/{id}/permissions', [RoleController::class, 'permissions'])->name('roles.permissions');
         Route::resource('roles', RoleController::class);
+
+        Route::resource('currencies', CurrenciesController::class);
 
         // User Routes
         Route::get('users/{id}/activity-logs', [UsersController::class, 'activityLogs'])->name('users.activity-logs');

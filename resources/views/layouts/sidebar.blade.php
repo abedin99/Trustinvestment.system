@@ -33,14 +33,52 @@
                     </a>
                 </li>
 
+                @if (auth()->user()->agent)
+                    <li class="nav-item">
+                        <a href="{{ route('agent-panel.deposits.index') }}"
+                            class="nav-link {{ Request::routeIs('agent-panel.*') ? 'active' : null }}">
+                            <i class="nav-icon fa fa-th-large fa-university"></i>
+                            <p>
+                                Agent Panel
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview" style="display: none;">
+                            <li class="nav-item">
+                                <a href="tables/simple.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Dashboard</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="tables/data.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Deposits</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="tables/jsgrid.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Withdrawal</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="tables/jsgrid.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Mobile Recharge</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
+
                 <li class="nav-item">
-                    <a href="{{ route('deposits.index') }}"
-                        class="nav-link {{ Request::routeIs('deposits.*') ? 'active' : null }}">
+                    <a href="{{ route('deposit.index') }}"
+                        class="nav-link {{ Request::routeIs('deposit.*') ? 'active' : null }}">
                         <i class="nav-icon fas fa-money-bill"></i>
                         <p>Deposit</p>
                     </a>
                 </li>
-
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

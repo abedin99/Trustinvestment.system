@@ -38,7 +38,7 @@ class User extends Authenticatable
             ->logOnly($filtered)
             ->setDescriptionForEvent(fn(string $eventName) => "This user info has been {$eventName}");
     }
-    
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -64,9 +64,20 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    
+
+    /**
+     * Get the user is online record associated with the user.
+     */
     public function isOnline()
     {
         return Cache::has('user-is-online-' . $this->id);
+    }
+
+    /**
+     * Get the agent record associated with the user.
+     */
+    public function agent()
+    {
+        return $this->hasOne(Agent::class);
     }
 }
