@@ -15,7 +15,7 @@
             <a href="{{ route('login') }}" class="nav-link">Login As User</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="{{ route('clear') }}" class="nav-link btn btn-danger text-light">Cache Clear</a>
+            <a href="{{ route('clear') }}" class="nav-link btn btn-warning text-dark">Cache Clear</a>
         </li>
     </ul>
 

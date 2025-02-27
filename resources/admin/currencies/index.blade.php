@@ -11,8 +11,7 @@
     <x-slot name="js">
         {!! $dataTable->scripts(attributes: ['type' => 'module']) !!}
         <script type="text/javascript">
-            function deleteConfirmation(ele) 
-            {
+            function deleteConfirmation(ele) {
                 var id = $(ele).data("id");
                 var action_url = $(ele).data("action");
                 Swal.fire({
@@ -24,18 +23,20 @@
                     confirmButtonText: "Yes, delete it!",
                     cancelButtonText: "No, cancel!",
                     reverseButtons: !0
-                }).then(function (e) {
-        
+                }).then(function(e) {
+
                     if (e.value === true) {
                         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-        
+
                         $.ajax({
                             type: 'DELETE',
                             url: action_url,
-                            data: {_token: CSRF_TOKEN},
+                            data: {
+                                _token: CSRF_TOKEN
+                            },
                             dataType: 'JSON',
-                            success: function (results) {
-        
+                            success: function(results) {
+
                                 if (results.success === true) {
                                     Swal.fire({
                                         icon: 'success',
@@ -57,12 +58,12 @@
                                 }
                             }
                         });
-        
+
                     } else {
                         e.dismiss;
                     }
-        
-                }, function (dismiss) {
+
+                }, function(dismiss) {
                     return false;
                 })
             }
@@ -103,7 +104,8 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('admin.currencies.index') }}">payment types</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin.currencies.index') }}">payment types</a>
+                        </li>
                         <li class="breadcrumb-item active">Index</li>
                     </ol>
                 </div><!-- /.col -->
@@ -120,9 +122,15 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="card-title">Manage currency</div>
-                            <div class="card-tools">
-                                <a href="{{ route('admin.currencies.create') }}" class="btn btn-block bg-gradient-primary btn-sm"><i class="fas fa-plus mr-2"></i> Add</a>
-                            </div>
+                            @permit('currency_create')
+                                <div class="card-tools">
+                                    <a href="{{ route('admin.currencies.create') }}"
+                                        class="btn btn-block bg-gradient-primary btn-sm">
+                                        <i class="fas fa-plus mr-2"></i>
+                                        Add
+                                    </a>
+                                </div>
+                            @endpermit
                         </div>
                         <div class="card-body">
                             {{ $dataTable->table(['class' => 'table table-bordered table-striped table-hover']) }}

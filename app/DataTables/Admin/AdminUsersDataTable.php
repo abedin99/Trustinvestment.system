@@ -2,14 +2,15 @@
 
 namespace App\DataTables\Admin;
 
+use App\Http\Helpers\Permission;
 use App\Models\Admin;
-use Yajra\DataTables\DataTables;
-use Yajra\DataTables\Html\Button;
-use Yajra\DataTables\Html\Column;
-use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\URL;
+use Yajra\DataTables\DataTables;
+use Yajra\DataTables\Html\Button;
+use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
@@ -28,9 +29,16 @@ class AdminUsersDataTable extends DataTable
             ->eloquent($query)
             ->addColumn('action', function ($query) {
                 $id = Crypt::encryptString($query->id);
-                $html = '<a href="' . route('admin.admins.show', $id) . '" class="btn btn-sm btn-info m-1"><i class="fa fa-history"></i> Activity Logs</a>';
-                $html .= '<a href="' . route('admin.admins.edit', $id) . '" class="btn btn-sm btn-primary m-1"><i class="fa fa-edit"></i> Edit</a>';
-                $html .= '<button class="btn btn-danger btn-sm remove-data" data-id="' . $id . '" data-action="' . route('admin.admins.destroy', $id) . '" onclick="deleteConfirmation(this)"><i class="fa fa-trash"></i> Delete</button>';
+                $html = '';
+                if (Permission::permit('admin_show')) {
+                    $html .= '<a href="' . route('admin.admins.show', $id) . '" class="btn btn-sm btn-info m-1"><i class="fa fa-history"></i> Activity Logs</a>';
+                }
+                if (Permission::permit('admin_edit')) {
+                    $html .= '<a href="' . route('admin.admins.edit', $id) . '" class="btn btn-sm btn-primary m-1"><i class="fa fa-edit"></i> Edit</a>';
+                }
+                if (Permission::permit('admin_delete')) {
+                    $html .= '<button class="btn btn-danger btn-sm remove-data" data-id="' . $id . '" data-action="' . route('admin.admins.destroy', $id) . '" onclick="deleteConfirmation(this)"><i class="fa fa-trash"></i> Delete</button>';
+                }
                 return $html;
             })
             ->editColumn('name', function ($query) {
@@ -38,13 +46,13 @@ class AdminUsersDataTable extends DataTable
                 if ($query->name != null) {
                     $html .= $query->name;
                 }
-                if($query->isOnline()){
+                if ($query->isOnline()) {
                     $html .= "<i class=\"fas fa-solid fa-circle text-success\" title=\"Available in online\"></i>";
                 }
                 if ($query->banned_at != null) {
                     $html .= "<br><span class=\"badge badge-danger\">Banned</span>";
                 }
-                if($query->disabled_at != null){
+                if ($query->disabled_at != null) {
                     $html .= "<br><span class=\"badge badge-warning\">disabled</span>";
                 }
                 return $html;

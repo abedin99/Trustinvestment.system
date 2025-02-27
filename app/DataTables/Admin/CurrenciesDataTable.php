@@ -2,12 +2,13 @@
 
 namespace App\DataTables\Admin;
 
+use App\Http\Helpers\Permission;
 use App\Models\Currency;
-use Yajra\DataTables\Html\Column;
-use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\URL;
+use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 
 class CurrenciesDataTable extends DataTable
@@ -24,8 +25,13 @@ class CurrenciesDataTable extends DataTable
             ->eloquent($query)
             ->addColumn('action', function ($query) {
                 $id = Crypt::encryptString($query->id);
-                $html = '<a href="' . route('admin.currencies.edit', $id) . '" class="btn btn-sm btn-info m-1"><i class="fa fa-edit"></i> Edit</a>';
-                $html .= '<button class="btn btn-danger btn-sm remove-data" data-id="' . $id . '" data-action="' . route('admin.currencies.destroy', $id) . '" onclick="deleteConfirmation(this)"><i class="fa fa-trash"></i> Delete</button>';
+                $html  = '';
+                if (Permission::permit('currency_edit')) {
+                    $html .= '<a href="' . route('admin.currencies.edit', $id) . '" class="btn btn-sm btn-info m-1"><i class="fa fa-edit"></i> Edit</a>';
+                }
+                if (Permission::permit('currency_delete')) {
+                    $html .= '<button class="btn btn-danger btn-sm remove-data" data-id="' . $id . '" data-action="' . route('admin.currencies.destroy', $id) . '" onclick="deleteConfirmation(this)"><i class="fa fa-trash"></i> Delete</button>';
+                }
                 return $html;
             })
             ->editColumn('name', function ($query) {

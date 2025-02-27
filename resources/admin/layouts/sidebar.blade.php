@@ -47,14 +47,17 @@
                 @endpermit
 
 
-                <li class="nav-item">
-                    <a href="{{ route('admin.users.index') }}"
-                        class="nav-link {{ Request::routeIs('admin.users.*') ? 'active' : null }}">
-                        <i class="nav-icon fas fa-users"></i>
-                        <p>Users</p>
-                    </a>
-                </li>
-
+                @permit(['user_index', 'user_create', 'user_edit', 'user_show', 'user_delete', 'user_force_delete'])
+                    @permit('user_index')
+                        <li class="nav-item">
+                            <a href="{{ route('admin.users.index') }}"
+                                class="nav-link {{ Request::routeIs('admin.users.*') ? 'active' : null }}">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>Users</p>
+                            </a>
+                        </li>
+                    @endpermit
+                @endpermit
 
                 <li class="nav-header">SYSTEM</li>
 
@@ -64,7 +67,6 @@
                     'currency_edit',
                     'currency_show',
                     'currency_delete',
-                    'currency_permissions',
                     'currency_force_delete'
                 ])
                     @permit('currency_index')
@@ -79,13 +81,17 @@
                 @endpermit
 
 
-                <li class="nav-item">
-                    <a href="{{ route('admin.admins.index') }}"
-                        class="nav-link {{ Request::routeIs('admin.admins.*') ? 'active' : null }}">
-                        <i class="nav-icon fa fa-solid fa-user-tie"></i>
-                        <p>Admins</p>
-                    </a>
-                </li>
+                @permit(['admin_index', 'admin_create', 'admin_edit', 'admin_show', 'admin_delete', 'admin_force_delete'])
+                    @permit('admin_index')
+                        <li class="nav-item">
+                            <a href="{{ route('admin.admins.index') }}"
+                                class="nav-link {{ Request::routeIs('admin.admins.*') ? 'active' : null }}">
+                                <i class="nav-icon fa fa-solid fa-user-tie"></i>
+                                <p>Admins</p>
+                            </a>
+                        </li>
+                    @endpermit
+                @endpermit
 
                 @permit([
                     'role_index',
